@@ -4,14 +4,22 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
-#include <time.h>
-#include <stdlib.h>
+#include <ctime>
 
 #include <Eigen/Core>
 #include <Eigen/Dense>
 #include <Eigen/Eigen>
 #include <Eigen/SVD>
 #include <Eigen/Sparse>
+
+#ifdef __MINGW32__
+
+#define srand48(s) srand(s)
+#define drand48() (((double)rand())/((double)RAND_MAX))
+#define lrand48() rand()
+
+#endif
+
 
 #define IMPUTE_NONE 0
 #define IMPUTE_AVG 1
